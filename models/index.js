@@ -4,11 +4,11 @@ const hotelsSchema=require('./hotels')
 const ridesSchema=require('./rides')
 
 const food =mongoose.model('food', foodSchema)
-const hotels =mongoose.model('hotels',hotelsSchema)
-const rides=mongoose.model('rides',ridesSchema)
+const hotel =mongoose.model('hotel',hotelsSchema)
+const ride=mongoose.model('ride',ridesSchema)
 
 module.exports={
   food,
-  hotels,
-  rides
+  hotel,
+  ride
 }

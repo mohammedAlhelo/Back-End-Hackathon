@@ -1,6 +1,6 @@
 const {Schema} = require('mongoose')
 
-const ridesSchema= new Schema (
+const rideSchema= new Schema (
   {
     title:{type:String},
     description:{type:String},
@@ -8,4 +8,4 @@ const ridesSchema= new Schema (
   }
 )
 
-module.exports=ridesSchema
+module.exports=rideSchema

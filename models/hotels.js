@@ -1,6 +1,6 @@
 const {Schema} = require('mongoose')
 
-const hotelsSchema= new Schema (
+const hotelSchema= new Schema (
   {
     title:{type:String},
     location:{type:String},
@@ -8,4 +8,4 @@ const hotelsSchema= new Schema (
   }
 )
 
-module.exports=hotelsSchema
+module.exports=hotelSchema
