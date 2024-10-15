@@ -4,7 +4,7 @@ const rideSchema= new Schema (
   {
     title:{type:String},
     description:{type:String},
-    timeRequired:{type:Number}
+    timeRequired:{type:String}
   }
 )
 

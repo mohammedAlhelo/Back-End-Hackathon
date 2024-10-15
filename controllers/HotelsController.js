@@ -1,6 +1,6 @@
 const {hotel}=require('../models')
 
-const Gethotels=async(req,res)=>{
+const GetHotels=async(req,res)=>{
   try{
     const hotels=await hotel.find({})
     res.send(hotels)
@@ -9,17 +9,17 @@ const Gethotels=async(req,res)=>{
   }
 }
 
-const Createhotel= async (req,res)=>{
+const CreateHotel= async (req,res)=>{
   // you wil need a kitchen to create hotel, i will guide myself out
   try{
-    const hotel=await hotel.create({...req.body})
-    res.send(hotel)
+    const hotl=await hotel.create({...req.body})
+    res.send(hotl)
   }catch(error){
     throw error
   }
 }
 
-const Deletehotel=async(req,res)=>{
+const DeleteHotel=async(req,res)=>{
   try{
     await hotel.deleteOne({_id:req.params.hotel_id})
     res.send({ msg: 'Post Deleted', payload: req.params.post_id, status: 'Ok' })
@@ -29,7 +29,7 @@ const Deletehotel=async(req,res)=>{
   }
 
   module.exports={
-    Gethotels,
-    Createhotel,
-    Deletehotel,
+    GetHotels,
+    CreateHotel,
+    DeleteHotel,
   }

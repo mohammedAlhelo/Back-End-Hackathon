@@ -12,8 +12,8 @@ const GetFoods=async(req,res)=>{
 const CreateFood= async (req,res)=>{
   // you wil need a kitchen to create food, i will guide myself out
   try{
-    const food=await food.create({...req.body})
-    res.send(food)
+    const fod= await food.create({...req.body})
+    res.send(fod)
   }catch(error){
     throw error
   }

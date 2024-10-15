@@ -1,6 +1,6 @@
-const {ride}=require('../models')
+const {ride}=require('../models/')
 
-const Getrides=async(req,res)=>{
+const GetRides=async(req,res)=>{
   try{
     const rides=await ride.find({})
     res.send(rides)
@@ -9,17 +9,17 @@ const Getrides=async(req,res)=>{
   }
 }
 
-const Createride= async (req,res)=>{
+const CreateRide= async (req,res)=>{
   // you wil need a kitchen to create ride, i will guide myself out
   try{
-    const ride=await ride.create({...req.body})
-    res.send(ride)
+    const rid=await ride.create({...req.body})
+    res.send(rid)
   }catch(error){
     throw error
   }
 }
 
-const Deleteride=async(req,res)=>{
+const DeleteRide=async(req,res)=>{
   try{
     await ride.deleteOne({_id:req.params.ride_id})
     res.send({ msg: 'Post Deleted', payload: req.params.post_id, status: 'Ok' })
@@ -29,7 +29,7 @@ const Deleteride=async(req,res)=>{
   }
 
   module.exports={
-    Getrides,
-    Createride,
-    Deleteride,
+    GetRides,
+    CreateRide,
+    DeleteRide,
   }
