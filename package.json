@@ -6,8 +6,10 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "init": "^0.1.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7"
   }
 }
