@@ -4,7 +4,8 @@ const foodSchema= new Schema (
   {
     title:{type:String},
     description:{type:String},
-    foodType:{type:String}
+    foodType:{type:String},
+    price:{type:String}
   }
 )
 

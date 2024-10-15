@@ -3,8 +3,9 @@ const {Schema} = require('mongoose')
 const rideSchema= new Schema (
   {
     title:{type:String},
-    description:{type:String},
-    timeRequired:{type:String}
+    capacityLimit:{type:String},
+    heightLimit:{type:String},
+    deathRisk:{type:String}
   }
 )
 
