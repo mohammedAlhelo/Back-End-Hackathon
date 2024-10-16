@@ -64,7 +64,7 @@ const UpdatePassword = async (req, res) => {
       user.passwordDigest,
       oldPassword
     )
-    // If they match, hashes the new password, updates the db with the new digest, then sends the user as a response
+    // If they match, hashes the new password, updates the db with the new digest, then sends the user as a respons
     if (matched) {
       let passwordDigest = await middleware.hashPassword(newPassword)
       user = await User.findByIdAndUpdate(req.params.user_id, { passwordDigest })
