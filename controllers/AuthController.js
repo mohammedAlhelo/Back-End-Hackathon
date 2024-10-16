@@ -40,7 +40,7 @@ const SignIn = async (req, res) => {
       let payload = {
         id: user.id,
         email: user.email,
-        isAdmin:user.isAdmin
+        isAdmin: user.isAdmin
       }
       // Creates our JWT and packages it with our payload to send as a response
       let token = middleware.createToken(payload)
@@ -56,7 +56,7 @@ const SignIn = async (req, res) => {
 const UpdatePassword = async (req, res) => {
   try {
     // Extracts the necessary fields from the request body
-    const { oldPassword, newPassword } = (req.body)
+    const { oldPassword, newPassword } = req.body
     // Finds a user by a particular field (in this case, the user's id from the URL param)
     let user = await User.findById(req.params.user_id)
     // Checks if the password matches the stored digest
@@ -64,20 +64,29 @@ const UpdatePassword = async (req, res) => {
       user.passwordDigest,
       oldPassword
     )
-    // If they match, hashes the new password, updates the db with the new digest, then sends the user as a respons
+    // If they match, hashes the new password, updates the db with the new digest, then sends the user as a response
     if (matched) {
       let passwordDigest = await middleware.hashPassword(newPassword)
-      user = await User.findByIdAndUpdate(req.params.user_id, { passwordDigest })
+      user = await User.findByIdAndUpdate(req.params.user_id, {
+        passwordDigest
+      })
       let payload = {
         id: user.id,
         email: user.email
       }
       return res.send({ status: 'Password Updated!', user: payload })
     }
-    res.status(401).send({ status: 'Error', msg: 'Old Password did not match!' })
+    res
+      .status(401)
+      .send({ status: 'Error', msg: 'Old Password did not match!' })
   } catch (error) {
     console.log(error)
-    res.status(401).send({ status: 'Error', msg: 'An error has occurred updating password!' })
+    res
+      .status(401)
+      .send({
+        status: 'Error',
+        msg: 'An error has occurred updating password!'
+      })
   }
 }
 
