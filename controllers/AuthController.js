@@ -39,6 +39,7 @@ const SignIn = async (req, res) => {
     if (matched) {
       let payload = {
         id: user.id,
+        name: user.name,
         email: user.email,
         isAdmin: user.isAdmin
       }
@@ -81,12 +82,10 @@ const UpdatePassword = async (req, res) => {
       .send({ status: 'Error', msg: 'Old Password did not match!' })
   } catch (error) {
     console.log(error)
-    res
-      .status(401)
-      .send({
-        status: 'Error',
-        msg: 'An error has occurred updating password!'
-      })
+    res.status(401).send({
+      status: 'Error',
+      msg: 'An error has occurred updating password!'
+    })
   }
 }
 
