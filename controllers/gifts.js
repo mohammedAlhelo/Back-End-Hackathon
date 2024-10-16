@@ -13,7 +13,7 @@ const createGifts = async (req, res) => {
 const getGifts = async (req, res) => {
   try {
     const gifts = await Gifts.find({});
-    res.status(200).send(gifts); 
+    res.send(gifts); 
   } catch (error) {
     console.error("Error fetching gifts:", error);
     res.status(400).json({ message: error.message }); 
@@ -47,4 +47,4 @@ module.exports = {
   getGifts,
   updateGifts,
   deleteGifts
-};
+}

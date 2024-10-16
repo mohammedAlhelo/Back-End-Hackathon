@@ -36,7 +36,7 @@ const updateClothes = async (req, res) => {
 // Delete
 const deleteClothes = async (req, res) => {
   try {
-    await Clothes.deleteOne({ _id: req.params.Gifts_id })
+    await Clothes.deleteOne({ _id: req.params.clothes_id })
     res.send({ msg: 'clothes Deleted', status: 'Ok' })
   } catch (error) {
     throw error

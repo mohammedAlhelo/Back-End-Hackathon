@@ -4,8 +4,10 @@ const { Schema } = mongoose;
 
 const giftsSchema = new Schema({
   name: { type: String, required: true },
+  image:{type: String, required:true},
   price: { type: Number, required: true },
-  inStock: { type: Boolean, default: true },
+  cursed: {type:Boolean, required:true}
+  
 }, 
 { timestamps: true });
 

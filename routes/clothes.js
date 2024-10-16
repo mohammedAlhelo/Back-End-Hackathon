@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const controller = require('../controllers/clothes')
-
+const { isAdmin } = require('../middleware')
 
 router.get('/', controller.getClothes)
 router.post(
@@ -14,7 +14,8 @@ router.put(
 )
 
 router.delete(
-  '/:clothes_id',
+  '/:clothes_id', 
+  isAdmin,
   controller.deleteClothes
 )
 
