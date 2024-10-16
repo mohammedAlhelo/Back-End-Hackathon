@@ -1,4 +1,7 @@
 const Shop = require('../models/Shop')
+const Clothes = require('../models/Clothes');
+const Gifts = require('../models/Gifts');
+
 
 // Create a new shop
 const createShop = async (req, res) => {
@@ -55,9 +58,30 @@ const deleteShop = async (req, res) => {
   }
 }
 
+// Get/read
+const getClothes = async (req, res) => {
+  try {
+    const clothes = await Clothes.find({});
+    res.send(clothes);
+  } catch (error) {
+    throw error
+  }
+}
+
+const getGifts = async (req, res) => {
+  try {
+    const gifts = await Gifts.find({});
+    res.send(gifts); 
+  } catch (error) {
+    console.error("Error fetching gifts:", error);
+    res.status(400).json({ message: error.message }); 
+  }
+}
 module.exports = {
   createShop,
   getShops,
   updateShop,
-  deleteShop
+  deleteShop,
+  getClothes,
+  getGifts
 }

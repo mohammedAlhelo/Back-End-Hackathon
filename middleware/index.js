@@ -63,10 +63,25 @@ const verifyToken = (req, res, next) => {
   }
 }
 
+const isAdmin = async (req, res, next) => {
+  try {
+    const { id } = res.locals.payload
+    const user = await User.findById(id)
+    if (user && user.isAdmin) {
+      next()
+    } else {
+      res.status(403).send({ status: 'Error', msg: 'Unauthorized: Admin access required' })
+    }
+  } catch (error) {
+    res.status(500).send({ status: 'Error', msg: 'An error occurred while checking admin status' })
+  }
+}
+
 module.exports = {
   hashPassword,
   comparePassword,
   createToken,
   stripToken,
-  verifyToken
+  verifyToken,
+  isAdmin
 }

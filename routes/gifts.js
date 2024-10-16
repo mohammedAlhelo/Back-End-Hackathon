@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const controller = require('../controllers/gifts')
+const { isAdmin } = require('../middleware')
 
 router.get('/', controller.getGifts)
 router.post(
@@ -14,6 +15,7 @@ router.put(
 
 router.delete(
   ':gifts_id',
+  isAdmin,
   controller.deleteGifts
 )
 
